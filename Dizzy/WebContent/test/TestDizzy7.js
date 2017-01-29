@@ -551,7 +551,7 @@ class TreeAidor  {
 	}
 }
 describe("Test Dizzy Suite 51-60", function() {
-	tester = new TreeGator71();
+	tester = new TreeAidor();
     it(test70Title, test70);
     it(test71Title, test71);
 });	  

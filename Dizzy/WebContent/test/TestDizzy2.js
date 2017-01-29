@@ -956,7 +956,7 @@ describe("Test Dizzy Suite 11-20", function() {
 	  it(test17Title, test17);
 	  
 
-	  diz = diz18;
+	  //diz = diz18;
 
 	  it(test11Title, test11);
 	  it(test12Title, test12);

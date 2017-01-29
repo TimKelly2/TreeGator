@@ -1,6 +1,5 @@
 
-git remote add origin https://github.com/TimKelly2/TreeGator.git
-git push -u origin master
+/*
 
 
 
@@ -154,3 +153,4 @@ ventilator
 vibrator
 vindicator
 violator
+*/
