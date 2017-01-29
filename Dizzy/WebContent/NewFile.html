@@ -1,0 +1,62 @@
+
+<html>
+<header>
+	<style>
+span {
+	
+}
+</style>
+</header>
+<body>
+<div>
+  <div dizid=element1>1 
+	  <span dizid=element2>2 
+		 <span dizid=element3>4</span> 
+		 <span dizid=element3>5</span></span> 
+	  <span dizid=element2>3
+		 <span dizid=element3>6</span>
+		 <span dizid=element3>7</span>
+	  </span>
+  </div>
+  <div dizid=element1>8 
+	  <span dizid=element2>9 
+		 <span dizid=element3>10</span> 
+		 <span dizid=element3>11</span></span> 
+	  <span dizid=element2>12
+		 <span dizid=element3>13</span>
+		 <span dizid=element3>14</span>
+	  </span>
+  </div>
+
+</div>
+</body>
+</html>
+
+class Hop38 {
+		constructor(relationship, parameter, selector ){
+			if(selector == undefined){
+				this.selector = "[dizid="+ parameter +"]";
+			}else {
+				this.selector = selector;
+			}
+			this.dimension = parameter;
+			this.relationship = this.buildRelationship(relationship);
+		}
+		buildRelationship(rel){
+			if(rel instanceof Element){
+				return nodeListToArray(rel.querySelectorAll(this.selector));
+			}else if (Array.isArray(rel) ){
+				return htmlPool.map( (aRel) => this.selectHtml(aRel));
+			}
+		}
+
+}	
+
+Error: Expected '<div dizid="players"><span dizid="firstName">Dizzy</span></div><div dizid="players"><span dizid="firstName">Paul</span></div><div dizid="players"><span dizid="firstName">Joe</span></div><div dizid="players"><span dizid="firstName">Dizzy</span></div><div dizid="players"><span dizid="firstName">Paul</span></div><div dizid="players"><span dizid="firstName">Joe</span></div>' to be '
+                 <div dizid="players"><span dizid="firstName">Dizzy</span></div><div dizid="players"><span dizid="firstName">Paul</span></div><div dizid="players"><span dizid="firstName">Joe</span></div>'.
+
+                 
+Expected '<trunk><branch><twig>apple</twig><twig>apple</twig></branch><branch><twig>apple</twig><twig>apple</twig></branch></trunk>' to be '
+          <trunk><branch><twig>apple</twig><twig>banana</twig><twig>cherry</twig></branch><branch><twig>apple</twig><twig>banana</twig><twig>cherry</twig></branch></trunk>'.
+    at stack (file:///C:/Users/Tim/workspaceDizzy/Dizzy/WebContent/lib/jasmine-2.5.2/jasmine.js:1640:17)
+  

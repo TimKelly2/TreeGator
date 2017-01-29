@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<table>
+		<thead>
+			<tr>
+				<td>Operation</td>
+				<td>State</td>
+				<td>SubState</td>
+				<td>Action</td>
+				<td>Alternative Action</td>
+			</tr>
+		</thead>
+		<tr>
+			<td>dizParameterHtml</td>
+			<td>parm is array</td>
+			<td>html is single</td>
+			<td>resize parm<br>parm[i] = recurse()<br>=&gt; parm</td>
+
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>html is nodelist</td>
+			<td>resize parm<br>parm[i] = recurse()<br>=&gt; parm</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>html is NodeList</td>
+			<td>html.length &gt; 0</td>
+			<td>Cell<br>=&gt; recurse html[0]</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td></td><td>parm is object</td><td>member , ,<br></td><td></td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</table>
+	<table>
+		<thead>
+			<tr>
+				<td>expression</td>
+				<td>html</td>
+			</tr>
+		</thead>
+		<tr>
+			<td> {name: ''}</td>
+			<td>&lt;span dizid=name&gt;
+			</td>
+		</tr>
+		<tr>
+			<td> {firstname: '', lastName}</td>
+			<td>&lt;span dizid=firstname&gt;
+			&lt;span dizid=lastname&gt;
+			</td>
+		</tr>
+		<tr>
+			<td> [{firstname: '', lastName}]</td>
+			<td>&lt;div&gt;&lt;span dizid=firstname&gt;
+			&lt;span dizid=lastname&gt;
+			&lt;/div&gt;</td>
+		</tr>
+		<tr>
+			<td> players:  [{firstname: '', lastName}]</td>
+			<td>&lt;div dizid=players<br>&lt;div&gt;&lt;span dizid=firstname&gt;
+			&lt;span dizid=lastname&gt;
+			&lt;/div&gt;<br>&lt;/players</td>
+		</tr>
+	</table>
+</body>
+</html>
