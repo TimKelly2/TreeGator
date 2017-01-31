@@ -1,0 +1,55 @@
+
+<html>
+<header>
+<style type="text/css">
+table {
+  border-collapse: collapse;
+}
+td {
+  border:thin solid black;
+}
+
+
+</style>
+</header>
+<body>
+<h1> Player Statistics</h1>
+<div>
+<table id=stats>
+<tr>
+  <th align="center" tip="<strong>Rank</strong><br>This is a count of the rows from top to bottom.<br>It is recalculated following the sorting of a column." data-stat="ranker">Rk</th>
+  <th align="left"   tip="<strong>Position</strong>" data-stat="pos">Pos</th>
+  <th align="left"   tip="<strong>Player Name</strong><br><strong>Bold</strong> can mean player is active for this team<br>or player has appeared in MLB<br>* means LHP or LHB,<br># means switch hitter,<br>+ can mean HOFer." data-stat="player">Name</th>
+  <th align="center" tip="Player’s age at midnight of June 30th of that year" data-stat="age">Age</th>
+  <th align="center" tip="Games Played or Pitched" data-stat="G" data-name="Games Played" data-filter="1">G</th>
+  <th align="center" tip="<strong>Plate Appearances</strong><br>When available, we use actual plate appearances from play-by-play game accounts<br>Otherwise estimated using AB + BB + HBP + SF + SH,<br>which excludes catcher interferences.<br>When <span class=tooltip>this color</span> click for a summary of each PA." data-stat="PA" data-name="Plate Appearances" data-filter="1">PA</th>
+  <th align="center" tip="At Bats" data-stat="AB" data-name="At Bats" data-filter="1">AB</th>
+  <th align="center" tip="Runs Scored/Allowed" data-stat="R" data-name="Runs Scored" data-filter="1">R</th>
+  <th align="center" tip="Hits/Hits Allowed" data-stat="H" data-name="Hits" data-filter="1">H</th>
+  <th align="center" tip="Doubles Hit/Allowed" data-stat="2B" data-name="Doubles" data-filter="1">2B</th>
+  <th align="center" tip="Triples Hit/Allowed" data-stat="3B" data-name="Triples" data-filter="1">3B</th>
+  <th align="center" tip="Home Runs Hit/Allowed" data-stat="HR" data-name="Home Runs" data-filter="1">HR</th>
+  <th align="center" tip="Runs Batted In" data-stat="RBI" data-name="Runs Batted In" data-filter="1">RBI</th>
+  <th align="center" tip="Stolen Bases" data-stat="SB" data-name="Stolen Bases" data-filter="1">SB</th>
+  <th align="center" tip="Caught Stealing" data-stat="CS" data-name="Caught Stealing" data-filter="1">CS</th>
+  <th align="center" tip="Bases on Balls/Walks" data-stat="BB" data-name="Bases on Balls" data-filter="1">BB</th>
+  <th align="center" tip="Strikeouts" data-stat="SO" data-name="Strikeouts" data-filter="1">SO</th>
+  <th align="center" class="tooltip hide_non_quals" tip="<strong>Hits/At Bats</strong><br>For recent years, leaders need 3.1 PA<br>per team game played<br>Bold indicates highest BA using current stats<br><span class=glimmer>Gold</span> means awarded title at end of year." data-stat="batting_avg" data-name="Batting Average" data-filter="1">BA</th>
+  <th align="center" class="tooltip hide_non_quals" tip="<strong>(H + BB + HBP)/(At Bats + BB + HBP + SF)</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-stat="onbase_perc" data-name="On-Base%" data-filter="1">OBP</th>
+  <th align="center" class="tooltip hide_non_quals" tip="<strong>Total Bases/At Bats or <br>(1B + 2*2B + 3*3B + 4*HR)/AB</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-stat="slugging_perc" data-name="Slugging %" data-filter="1">SLG</th>
+  <th align="center" class="tooltip hide_non_quals" tip="<strong>On-Base + Slugging Percentages </strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-stat="onbase_plus_slugging" data-name="On-Base Plus Slugging" data-filter="1">OPS</th>
+  <th align="center" class="tooltip hide_non_quals" tip="<strong>OPS+</strong><br>100*[OBP/lg OBP + SLG/lg SLG - 1]<br>Adjusted to the player’s ballpark(s)" data-stat="onbase_plus_slugging_plus" data-name="Adjusted OPS+" data-filter="1">OPS+</th>
+  <th align="center" tip="<strong>Total Bases</strong><br>Singles + 2 x Doubles + 3 x Triples + 4 x Home Runs." data-stat="TB" data-name="Total Bases" data-filter="1">TB</th>
+  <th align="center" tip="<strong>Double Plays Grounded Into</strong><br>Only includes standard 6-4-3, 4-3, etc. double plays.<br>First tracked in 1933.<br>For gamelogs only in seasons we have play-by-play, we include triple plays as well.<br>All official seasonal totals do not include GITP's." data-stat="GIDP" data-name="Double Plays Grounded Into" data-filter="1">GDP</th>
+  <th align="center" tip="Times Hit by a Pitch." data-stat="HBP" data-name="Hit By Pitch" data-filter="1">HBP</th>
+  <th align="center" tip="Sacrifice Hits (Sacrifice Bunts)" data-stat="SH" data-name="Sacrifice Hits" data-filter="1">SH</th>
+  <th align="center" tip="<strong>Sacrifice Flies</strong><br>First tracked in 1954." data-stat="SF" data-name="Sacrifice Flies" data-filter="1">SF</th>
+  <th align="center" tip="<strong>Intentional Bases on Balls</strong><br>First tracked in 1955." data-stat="IBB" data-name="Intentional Bases on Balls" data-filter="1">IBB</th>
+</tr>
+</table>
+
+</div>
+</body>
+<script type="text/javascript" src="test\TreeGator.js"></script>
+</html>
+

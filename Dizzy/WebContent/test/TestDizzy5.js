@@ -891,7 +891,29 @@ class TreeGator57  {
 		}
 	}
 }	
+var test72Title = "test72 'Read from table"
+	function test72() {
+		function addDizid(element){
+			element.setAttribute("dizid", element.tagName)
+		}
 
+	    var div  = document.createElement('div');
+	    var table = '<table><tbody><tr><th>First</th><th>Last</th> </tr><tr dizid="player"> <td dizid="firstName">Tex</td><td dizid="lastName">Carleton</td></tr><tr dizid="player"> <td dizid="firstName">Ripper</td><td dizid="lastName">Collins</td></tr></tbody></table>'
+	    
+	    div.innerHTML = table;
+		 div.querySelectorAll("table,thead,tbody,tfoot,th,tr,td").forEach(addDizid)
+//		 var treeAidor = new TreeAidor()
+//		 tables = treeAidor.inspire({TABLE:{TBODY : [{TR :[{TD: ['']}]}]}},div)
+//		 tab2 = treeAidor.inspire({TABLE:{TBODY : {TR :{TD: ''}}}},div)
+//		 tab3 = treeAidor.inspire({TABLE : {TR :{TD: ''}}},div)
+		 
+		 tables = tester.diz({TABLE:{TBODY : [{TR :[{TD: ['']}]}]}},div)
+		 tab2 = tester.diz({TABLE:{TBODY : {TR :{TD: ''}}}},div)
+		 tab3 = tester.diz({TABLE : {TR :{TD: ''}}},div)
+	    
+
+	    
+	}
 
 describe("Test Dizzy Suite 51-60", function() {
 //	tester = new TreeGator51();
@@ -923,5 +945,7 @@ describe("Test Dizzy Suite 51-60", function() {
 //    it(test24Title, test24);
 //    it(test25Title, test25);
     it(test26Title, test26);
-//    it(test27Title, test27);
+//  it(test27Title, test27);
+    it(test72Title, test72);
+    
 });	  

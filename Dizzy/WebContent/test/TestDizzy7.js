@@ -364,6 +364,55 @@ class Hope {
     }
 }
 
+
+var test72Title = "test72 duplicateQuestion "
+	function test72() {
+		function addDizid(element){
+			element.setAttribute("dizid", element.tagName)
+		}
+
+	    var div  = document.createElement('div');
+	    var table = '<table><tbody><th>First</th><th>Last</th> </tr><tr dizid="player"> <td dizid="firstName">Tex</td><td dizid="lastName">Carleton</td></tr><tr dizid="player"> <td dizid="firstName">Ripper</td><td dizid="lastName">Collins</td></tr></tbody></table>'
+	    
+	    div.innerHTML = table;
+		 div.querySelectorAll("table,thead,tbody,tfoot,th,tr,td").forEach(addDizid)
+		 var treeAidor = new TreeAidor73()
+		 var val1 = {TABLE:{TBODY : {TR :[{TD: ['']}]}}};
+		 var result1 = treeAidor.duplicateQuestion(val1)
+		 
+	     expect(result1).toEqual(val1);
+		 val1.TABLE.TBODY.TR[0].TD[0] = 'different'
+		 expect(result1).not.toEqual(val1);
+				 
+		 
+		 
+		 tab2 = treeAidor.inspire({TABLE:{TBODY : {TR :{TD: ''}}}},div)
+		 tab3 = treeAidor.inspire({TABLE : {TR :{TD: ''}}},div)
+	    
+
+	    
+	}
+
+
+var test73Title = "test73 'Read from table"
+	function test73() {
+		function addDizid(element){
+			element.setAttribute("dizid", element.tagName)
+		}
+
+	    var div  = document.createElement('div');
+	    var table = '<table><tbody><th>First</th><th>Last</th> </tr><tr dizid="player"> <td dizid="firstName">Tex</td><td dizid="lastName">Carleton</td></tr><tr dizid="player"> <td dizid="firstName">Ripper</td><td dizid="lastName">Collins</td></tr></tbody></table>'
+	    
+	    div.innerHTML = table;
+		 div.querySelectorAll("table,thead,tbody,tfoot,th,tr,td").forEach(addDizid)
+		 var treeAidor = new TreeAidor73()
+		 tables = treeAidor.inspire({TABLE:{TBODY : [{TR :[{TD: ['']}]}]}},div)
+		 tab2 = treeAidor.inspire({TABLE:{TBODY : {TR :{TD: ''}}}},div)
+		 tab3 = treeAidor.inspire({TABLE : {TR :{TD: ''}}},div)
+	    
+
+	    
+	}
 // testTreeGator57.diz()                      
 // testTreeGator57.dizParameterArrayHtml()
 // testTreeGator57.buildHop()
@@ -388,7 +437,7 @@ class Hope {
 // testTreeGator71.setParameterLength()         - parameter resized to match html.
 // Jan 29 1:23 PM 2017
 
-class TreeAidor  {
+class TreeAidor73  {
 	 constructor(){
 		 this.dizid = "dizid=";
 	 }
@@ -400,7 +449,7 @@ class TreeAidor  {
 		if(oneAnother instanceof NodeList || oneAnother instanceof Element){
 			inspirations.forEach((inspiration) => {result = this.inspireHtml(oneAnother, inspiration);});
 		}else if(inspirations[0] instanceof Element || inspirations[0] instanceof NodeList){
-			inspirations.forEach((inspiration) => {result = this.dizParameterHtml(oneAnother, inspiration);});
+			inspirations.forEach((inspiration) => {result = this.inspireParameter(oneAnother, inspiration);});
 		}
 		return result;
 	}
@@ -427,19 +476,34 @@ class TreeAidor  {
 	revealMeaningOfParameter(html,parameter){
 		html.innerText = parameter;
 	}
+	duplicateQuestion(original){
+		if(typeof original != "object" ) {
+			return ''
+		} else if(Array.isArray(original) == false){
+			var dup = {};
+			for(var member in original){
+				dup[member] = this.duplicateQuestion(original[member])
+			}
+			return dup;
+		}else if (original.length == 0){
+			return [];
+		}else 
+			return [this.duplicateQuestion(original[0])];
+	}
 	inspireParameter(parameter, html){
 		var localThis = this;
 		function isSingleHome(hope){
 			return hope.setsOfTwins.length == 1
 		}
+
 		function inspireFromHome(setOfTwins){
 			var home = setOfTwins[0].parentElement;
-			return localThis.inspireParameter(Object.assign({},parameter), home);
+			return localThis.inspireParameter(localThis.duplicateQuestion(parameter), home);
 		}
 		if (Array.isArray(parameter)){        //...                                                             // could be refactored like testTreeGator57.dizParameterArrayHtml()
 	    	var parameters = parameter;
 	    	var hope = new Hope(html,"","");
-	    	if(singleHome(hope)){
+	    	if(isSingleHome(hope)){
 		    	var twins = hope.setsOfTwins[0];
 		    	this.setParameterLength(parameters,twins.length);
 		    	for(var i = 0; i< parameters.length; i ++){
@@ -450,16 +514,22 @@ class TreeAidor  {
 	    	}
 	    	return parameter;
 	    } else if(typeof parameter == "object"  ){
-	    	var hopes = [];                           //...                                                     // could be refactored testTreeGator57.dizParameterObjectHtml()                                
+	    	var tuples = [];                           //...                                                     // could be refactored testTreeGator57.dizParameterObjectHtml()                                
 			for(var member in parameter ){
+				if(/^\d/.test(member)){
+					console.log('WTF ' + member);
+				}
 				var hope = new Hope(html,member,":not(template)>:not(template)["+this.dizid +member +"]");//... // could be refactored like testTreeGator57.buildHop()
 		    	if(hope.setsOfTwins.length == 1){
-		    		hopes.push(hope);
-		    	}else {// ignore previous hopes, we have to restart with Mom.
-		    		return hope.setsOfTwins.map(inspireParameterFromMom);
+		    		tuples.push([member,hope]);
+		    	}else if(hope.setsOfTwins.length > 1){// ignore previous hopes, we have to restart from home
+		    		return hope.setsOfTwins.map(inspireFromHome);
 		    	}
 			}
-	    	for(hope of hopes ){
+			var tup
+	    	for(tup of tuples ){
+	    		var member = tup[0]
+	    		var hope = tup[1]
 	    		var twins = hope.setsOfTwins[0]; 
 	    		if(twins.length ==1 ){
 			        parameter[member] = this.inspireParameter(parameter[member],twins[0]);
@@ -539,7 +609,7 @@ class TreeAidor  {
 		}
 	}
 	setParameterLength(parameters, length){
-		var imitateFirst = () => { return Object.assign({},parameters[0])};
+		var imitateFirst = () => { return this.duplicateQuestion(parameters[0])};
 		var imitateNothing = () => {return ''}; 
 		var imitate = parameters.length > 0?  imitateFirst : imitateNothing;
 		while(parameters.length < length){
@@ -550,8 +620,12 @@ class TreeAidor  {
 		}
 	}
 }
+/*
 describe("Test Dizzy Suite 51-60", function() {
-	tester = new TreeAidor();
-    it(test70Title, test70);
-    it(test71Title, test71);
-});	  
+
+	tester7 = new TreeAidor73(true);
+    it(test72Title, test72);
+    it(test73Title, test73);
+});	 
+*/
+ 
