@@ -1,0 +1,30 @@
+{
+  "name": "TreeGator",
+  "version": "1.0.0",
+  "description": "A TreeGator \"climbs\" two trees at the same time.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "testTreeGator()"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TimKelly2/TreeGator.git"
+  },
+  "keywords": [
+    "html",
+    "template",
+    "angular",
+    "jsp",
+    "handlebars",
+    "mustache"
+  ],
+  "author": "Tim Kelly <timkilo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TimKelly2/TreeGator/issues"
+  },
+  "homepage": "https://github.com/TimKelly2/TreeGator"
+}
