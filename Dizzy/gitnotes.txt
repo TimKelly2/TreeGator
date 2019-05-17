@@ -1,6 +1,6 @@
 https://github.com/TimKelly2/TreeGator
 
-git://github.comnono/TimKelly2/TreeGator
+git://github.com nono/TimKelly2/TreeGator
 
 C:\Users\Tim\Documents\GitHub\TreeGator\.git
 
