@@ -6,3 +6,4 @@ C:\Users\Tim\Documents\GitHub\TreeGator\.git
 
 C:\Users\Tim\Documents\GitHub\TreeGator\.git\config
 Test push 2/14 from eclipse
+Test push 5/16/19 from power shell
